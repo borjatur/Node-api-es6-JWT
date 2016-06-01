@@ -2,8 +2,8 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import morgan from 'morgan';
 import mongoose from 'mongoose';
-import userRoutes from './routes/userRoutes';
 import config from './config/config';
+import router from './routes/index';
 
 const port = process.env.PORT || 3000;
 
@@ -20,9 +20,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(morgan('dev'));
 
-let api = userRoutes(express);
-
-app.use('/api', api);
+app.use('/api', router);
 
 app.listen(port, () => {
   console.log(`Server running and listening in http://localhost:${port}`);
