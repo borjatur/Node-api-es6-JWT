@@ -1,7 +1,6 @@
 import mongoose from 'mongoose';
 import config from '../config/config';
-
-//https://gist.github.com/k33g/9960d96ec5f7d78a67e4
+import constants from '../constants/constants';
 
 let mongodb = {
   getConnection: () => {
@@ -10,7 +9,7 @@ let mongodb = {
         if(err) {
           reject(err);
         } else {
-          resolve('Connected to mongo database.');
+          resolve(constants.DB_CONNECTED);
         }
       });
     })

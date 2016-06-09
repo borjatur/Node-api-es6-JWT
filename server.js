@@ -6,14 +6,15 @@ import mongodb from './database/mongodb';
 
 const port = process.env.PORT || 3000;
 
+let app = express();
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(morgan('dev'));
+app.use('/api', router);
+
 mongodb.getConnection()
   .then((msg) => {
     console.log(msg);
-    let app = express();
-    app.use(bodyParser.urlencoded({ extended: true }));
-    app.use(bodyParser.json());
-    app.use(morgan('dev'));
-    app.use('/api', router);
     app.listen(port, () => {
       console.log(`Server running and listening in http://localhost:${port}`);
     });

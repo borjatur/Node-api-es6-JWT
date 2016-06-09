@@ -1,5 +1,6 @@
 import jsonwebtoken from 'jsonwebtoken';
 import config from '../config/config';
+import constants from '../constants/constants';
 
 export default (req, res, next) => {
 
@@ -10,7 +11,7 @@ export default (req, res, next) => {
       if(err) {
         res.status(403).send({
           success: false,
-          message: 'Failed to authenticate user.'
+          message: constants.AUTHENTICATION_FAILED
         });
       } else {
         req.decoded = decoded;
@@ -20,7 +21,7 @@ export default (req, res, next) => {
   } else {
     res.status(403).send({
       success: false,
-      message: 'No Token Provided.'
+      message: constants.NOT_TOKEN
     });
   }
 };
