@@ -2,7 +2,7 @@ import User from '../models/user';
 import Token from '../common/token';
 import constants from '../constants/constants';
 
-let userRoutes = {
+let userController = {
     signup: (req, res) => {
       let user = new User({
         name: req.body.name,
@@ -51,4 +51,4 @@ let userRoutes = {
     }
 };
 
-export default userRoutes;
+export default userController;

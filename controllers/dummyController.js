@@ -1,4 +1,4 @@
-let dummyRoutes = {
+let dummyController = {
   sayHello: (req, res) => {
     res.json({
       message: 'Hello world!'
@@ -12,4 +12,4 @@ let dummyRoutes = {
   }
 };
 
-export default dummyRoutes;
+export default dummyController;
